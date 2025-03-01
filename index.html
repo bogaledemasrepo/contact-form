@@ -22,6 +22,33 @@
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
+      .custum-radio-container{
+        width: 200px;
+        height: 200;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+
+      }
+      .custom-radio-btn{
+        width: 25px;
+        height: 25px;
+        border:2px solid #0c7d69;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .custom-radio-btn input{
+        display: none;
+      }
+      .custom-radio-btn input:checked + .checkmark{
+        display: inline-block;
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        border-radius: 50%;
+        background-color: #0c7d69;
+      }
       .attribution {
         font-size: 11px;
         text-align: center;
@@ -45,8 +72,7 @@
             <input
               type="text"
               id="fname"
-              onchange="()=>{console.log('Changed')}"
-              class="py-3 outline-none px-5 rounded-lg border border-[#2b4246]"
+              class="py-3  text-[#0c7d69] px-5 rounded-lg border border-[#87a3a6] hover:outline-1 outline-[ #2b4246]"
             />
             <p class="text-[#d73c3c] text-sm pt-2 hidden">This field is required</p>
           </div>
@@ -57,7 +83,7 @@
             <input
               type="text"
               id="lname"
-              class="py-3 outline-none px-5 rounded-lg border border-[#2b4246]"
+              class="py-3  text-[#0c7d69] px-5 rounded-lg border border-[#87a3a6] hover:outline-1 outline-[ #2b4246]"
             />
             <p class="text-[#d73c3c] text-sm pt-2 hidden">This field is required</p>
           </div>
@@ -70,7 +96,7 @@
             <input
               type="email"
               id="email"
-              class="py-3 outline-none px-5 rounded-lg border border-[#2b4246]"
+              class="py-3  text-[#0c7d69] px-5 rounded-lg border border-[#87a3a6] hover:outline-1 outline-[ #2b4246]"
             />
             <p class="text-[#d73c3c] text-sm pt-2 hidden">
               Please enter a valid email address
@@ -83,12 +109,19 @@
           >
           <div class="w-full flex flex-col sm:flex-row gap-4">
             <div
-              class="py-3 flex-1 flex gap-4 outline-none px-5 rounded-lg border border-[#2b4246]"
+              class="py-3 flex-1 flex gap-4  px-5 rounded-lg border border-[#87a3a6] hover:outline-1 outline-[ #2b4246]"
             >
-            <input type="radio" id="querygeneral" class="w-5 h-5 my-auto" name="enquery"> <p class="p-0 m-0">General enquery</p>
+            <label class="custom-radio-btn">
+              <input type="radio" name="option">
+              <span class="checkmark"></span>
+            </label>
+            <p class="p-0 m-0">General enquery</p>
             </div>
-            <div class="py-3 flex-1 flex gap-4 outline-none px-5 rounded-lg border border-[#2b4246]">
-              <input type="radio" id="querySupport" class="w-5 h-5 my-auto" name="enquery"> 
+            <div class="py-3 flex-1 flex gap-4  px-5 rounded-lg border border-[#87a3a6] hover:outline-1 outline-[ #2b4246]">
+              <label class="custom-radio-btn">
+                <input type="radio" name="option">
+                <span class="checkmark"></span>
+              </label>
               <p class="p-0 m-0">Support enquery</p>
             </div>
           </div>
@@ -101,7 +134,7 @@
             <textarea
               type="text"
               id="message"
-              class="py-3 h-[160px] sm:h-[100px] outline-none px-5 rounded-lg border border-[#2b4246]"
+              class="py-3 h-[160px] text-[#0c7d69] sm:h-[100px]  px-5 rounded-lg border border-[#87a3a6] hover:outline-1 outline-[ #2b4246]"
             ></textarea>
             <p class="text-[#d73c3c] text-sm pt-2 hidden">
               This field is required
@@ -109,7 +142,8 @@
         </div>
         <div class="w-full  flex flex-col my-8">
             <div class="flex gap-4">
-              <input type="checkbox" id="concent" class="w-5 h-5 my-auto border border-[#2b4246]" />
+              
+              <input type="checkbox" id="concent" class="w-6 h-6  my-auto rounded-full" />
               <p class="flex-1">
                 I consent to being contacted by the team
                 <span class="text-[#0c7d69] px-2">*</span>
@@ -125,24 +159,44 @@
       </form>
       </div>
     </div>
-
+    
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
       Coded by <a href="#">Your Name Here</a>.
     </div>
     <script>
+      const formData = new FormData()
+      const firstName = document.getElementById('fname')
+      const lastName = document.getElementById('lname')
+      const email = document.getElementById('email')
+      const querygeneral = document.getElementById('querygeneral')
+      const querySupport = document.getElementById('querySupport')
+      const queryError = document.getElementById('queryError')
+      const message = document.getElementById('message')
+      const concent = document.getElementById('concent')
+      querygeneral.addEventListener('change',function(e){
+        if(e.target.checked){
+          e.target.parentElement.classList.add('bg-[#E0F1E7]')
+          querySupport.parentElement.classList.remove('bg-[#E0F1E7]')
+
+        }else{
+          e.target.parentElement.classList.remove('bg-[#E0F1E7]')
+          querySupport.parentElement.classList.add('bg-[#E0F1E7]')
+        }
+      })
+      querySupport.addEventListener('change',function(e){
+        if(e.target.checked){
+          e.target.parentElement.classList.add('bg-[#E0F1E7]')
+          querygeneral.parentElement.classList.remove('bg-[#E0F1E7]')
+
+        }else{
+          e.target.parentElement.classList.remove('bg-[#E0F1E7]')
+          querygeneral.parentElement.classList.add('bg-[#E0F1E7]')
+        }
+      })
       document.getElementById('fromId').addEventListener('submit',function(e){
         e.preventDefault()
-        const formData = new FormData()
-        const firstName = document.getElementById('fname')
-        const lastName = document.getElementById('lname')
-        const email = document.getElementById('email')
-        const querygeneral = document.getElementById('querygeneral')
-        const querySupport = document.getElementById('querySupport')
-        const queryError = document.getElementById('queryError')
-        const message = document.getElementById('message')
-        const concent = document.getElementById('concent')
         if(firstName.value===''){
           firstName.classList.add('border-[#d73c3c]')
           firstName.parentElement.children[2].classList.remove('hidden')
@@ -200,6 +254,7 @@
         //   })
         // }
       })
+
     </script>
   </body>
 </html>

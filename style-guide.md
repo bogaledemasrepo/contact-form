@@ -14,7 +14,7 @@ The designs were created to the following widths:
 ### Primary
 
 - Green 200 (lighter): #dff1e7
-- Green 600 (medium): #0c7d69
+- Green 600 (medium):rgba(12, 125, 104, 0.51)
 - Red: #d73c3c
 
 ### Neutral
