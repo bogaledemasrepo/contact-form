@@ -1,52 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Contact form</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Contact form</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
 
-  Contact Us
+  <body class="bg-[#E0F1E7]">
+    <div class="w-full p-4 my-4 max-w-[740px] mx-auto md:my-32 rounded-lg">
+      <div class="w-full min-h-screen bg-[#fff] rounded-2xl p-8">
+        <h1 class="text-3xl mt-2 font-bold text-[#2b4246]">Contact Us</h1>
+        <form action="" class="flex-1" id="fromId">
+        <div class="w-full flex flex-col sm:flex-row sm:gap-4 my-2">
+          <div class="flex-1 flex flex-col">
+            <label for="" class="text-[16px] text-[#2b4246] py-3"
+              >First name <span class="text-[#0c7d69] px-2">*</span></label
+            >
+            <input
+              type="text"
+              id="fname"
+              onchange="()=>{console.log('Changed')}"
+              class="py-3 outline-none px-5 rounded-lg border border-[#2b4246]"
+            />
+            <p class="text-[#d73c3c] text-sm pt-2 hidden">This field is required</p>
+          </div>
+          <div class="flex-1 flex flex-col">
+            <label for="" class="text-[16px] text-[#2b4246] py-3"
+              >Last name <span class="text-[#0c7d69] px-2">*</span></label
+            >
+            <input
+              type="text"
+              id="lname"
+              class="py-3 outline-none px-5 rounded-lg border border-[#2b4246]"
+            />
+            <p class="text-[#d73c3c] text-sm pt-2 hidden">This field is required</p>
+          </div>
+        </div>
+        <div class="w-full flex flex-col sm:flex-row sm:gap-4 my-2">
+          <div class="flex-1 flex flex-col">
+            <label for="" class="text-[16px] text-[#2b4246] py-3"
+              >Email address <span class="text-[#0c7d69] px-2">*</span></label
+            >
+            <input
+              type="email"
+              id="email"
+              class="py-3 outline-none px-5 rounded-lg border border-[#2b4246]"
+            />
+            <p class="text-[#d73c3c] text-sm pt-2 hidden">
+              Please enter a valid email address
+            </p>
+          </div>
+        </div>
+        <div class="w-full my-2 flex flex-col">
+          <label for="" class="text-[16px] w-full text-[#2b4246] py-3"
+            >Query type <span class="text-[#0c7d69] px-2">*</span></label
+          >
+          <div class="w-full flex flex-col sm:flex-row gap-4">
+            <div
+              class="py-3 flex-1 flex gap-4 outline-none px-5 rounded-lg border border-[#2b4246]"
+            >
+            <input type="radio" id="querygeneral" class="w-5 h-5 my-auto" name="enquery"> <p class="p-0 m-0">General enquery</p>
+            </div>
+            <div class="py-3 flex-1 flex gap-4 outline-none px-5 rounded-lg border border-[#2b4246]">
+              <input type="radio" id="querySupport" class="w-5 h-5 my-auto" name="enquery"> 
+              <p class="p-0 m-0">Support enquery</p>
+            </div>
+          </div>
+          <p class="text-[#d73c3c] text-sm pt-2 hidden" id="queryError">Please select a query type</p>
+        </div>
+        <div class="w-full my-2 flex flex-col">
+            <label for="" class="text-[16px] text-[#2b4246] py-3"
+              >Message <span class="text-[#0c7d69] px-2">*</span></label
+            >
+            <textarea
+              type="text"
+              id="message"
+              class="py-3 h-[160px] sm:h-[100px] outline-none px-5 rounded-lg border border-[#2b4246]"
+            ></textarea>
+            <p class="text-[#d73c3c] text-sm pt-2 hidden">
+              This field is required
+            </p>
+        </div>
+        <div class="w-full  flex flex-col my-8">
+            <div class="flex gap-4">
+              <input type="checkbox" id="concent" class="w-5 h-5 my-auto border border-[#2b4246]" />
+              <p class="flex-1">
+                I consent to being contacted by the team
+                <span class="text-[#0c7d69] px-2">*</span>
+              </p>
+              
+            </div>
+            <p class="text-[#d73c3c] text-sm pt-2 hidden">To submit this form, please consent to being contacted</p>
+          </div>
+          <button type="submit" style="cursor: pointer;" class="active:opacity-80 transition duration-300 w-full py-4 bg-[#0c7d69] pointer rounded-lg text-white font-bold">
+            Submit
+          </button>
+        </div>
+      </form>
+      </div>
+    </div>
 
-  First Name
-  This field is required
-
-  Last Name
-  This field is required
-
-  Email Address
-  Please enter a valid email address
-  This field is required
-
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
-
-  Message
-  This field is required
-
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+    <script>
+      document.getElementById('fromId').addEventListener('submit',function(e){
+        e.preventDefault()
+        const formData = new FormData()
+        const firstName = document.getElementById('fname')
+        const lastName = document.getElementById('lname')
+        const email = document.getElementById('email')
+        const querygeneral = document.getElementById('querygeneral')
+        const querySupport = document.getElementById('querySupport')
+        const queryError = document.getElementById('queryError')
+        const message = document.getElementById('message')
+        const concent = document.getElementById('concent')
+        if(firstName.value===''){
+          firstName.classList.add('border-[#d73c3c]')
+          firstName.parentElement.children[2].classList.remove('hidden')
+        }else{
+          firstName.classList.remove('border-[#d73c3c]')
+          firstName.parentElement.children[2].classList.add('hidden') 
+          formData.append('fname',firstName.value)   
+        }
+        if(lastName.value===''){
+          lastName.classList.add('border-[#d73c3c]')
+          lastName.parentElement.children[2].classList.remove('hidden')
+        }else{
+          lastName.classList.remove('border-[#d73c3c]')
+          lastName.parentElement.children[2].classList.add('hidden')
+          formData.append('lname',lastName.value)   
+        }
+        if(email.value===''){
+          email.classList.add('border-[#d73c3c]')
+          email.parentElement.children[2].classList.remove('hidden')
+        }else{
+          email.classList.remove('border-[#d73c3c]')
+          email.parentElement.children[2].classList.add('hidden')
+          formData.append('email',email.value)   
+        }
+        if(!querygeneral.checked && !querySupport.checked){
+          queryError.classList.remove('hidden')
+        }else{queryError.classList.add('hidden')
+        formData.append('queryType',querygeneral.value||querySupport.value)   
+        }
+        if(message.value===''){
+          message.classList.add('border-[#d73c3c]')
+          message.parentElement.children[2].classList.remove('hidden')
+        }else{
+          message.classList.remove('border-[#d73c3c]')
+          message.parentElement.children[2].classList.add('hidden')
+          formData.append('message',message.value)   
+        }
+        if(!concent.checked){
+          concent.classList.add('border-[#d73c3c]')
+          concent.parentElement.parentElement.children[1].classList.remove('hidden')
+        }else{
+          concent.classList.remove('border-[#d73c3c]')
+          concent.parentElement.parentElement.children[1].classList.add('hidden')
+          formData.append('concented',true)
+        }
+        //To check weather all field is validated
+        let fields=0;
+        formData.forEach(Item=>{
+          fields=fields+1
+        })
+        // if(fields===6){
+        //   fetch('API-END-POINT',{
+        //     method:'POST',
+        //     body:formData
+        //   })
+        // }
+      })
+    </script>
+  </body>
 </html>
